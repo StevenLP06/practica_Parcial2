@@ -36,7 +36,12 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pet = new Pet;
+        $pet->name = $request->nombre;
+        $pet->breed = $request->raza;
+        $pet->age = $request->edad;
+        $pet->save();
+        return redirect()->route('pets.index');
     }
 
     /**
