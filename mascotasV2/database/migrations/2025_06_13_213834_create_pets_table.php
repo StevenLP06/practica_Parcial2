@@ -15,6 +15,7 @@ class CreatePetsTable extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('breed');
             $table->integer('age');
             $table->timestamps();

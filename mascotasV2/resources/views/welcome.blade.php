@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     <th scoope="col">#</th>
+                    <th scoope="col">Nombre</th>
                     <th scoope="col">Raza</th>
                     <th scoope="col">Edad</th>
                     <th scoope="col">Opciones</th>
@@ -22,12 +23,19 @@
             </thead>
             <tbody>
                 @foreach($pets as $pet)
-                @csrf
+                <!-- @csrf -->
                 <tr>
                     <td>{{$pet->id}}</td>
+                    <td>{{$pet->name}}</td>
                     <td>{{$pet->breed}}</td>
                     <td>{{$pet->age}}</td>
-                    <td><button type="button" class="btn btn-warning">Confirmar</button></td>
+                    <td>
+                        <form action="{{route('pets.destroy',$pet->id)}}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

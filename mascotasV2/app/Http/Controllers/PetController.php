@@ -81,6 +81,8 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pet = Pet::find($id);
+        $pet->delete();
+        return redirect()->route('pets.index');
     }
 }
